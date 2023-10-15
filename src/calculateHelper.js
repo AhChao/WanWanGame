@@ -17,3 +17,7 @@ function isAreaMeetFillGate() {
     var fillGateRate = 0.4;
     return totalArea * fillGateRate < getTotalAreaOfBalls();
 }
+
+function getRandomNumber(from, to) {
+    return Math.floor(Math.random() * (to - from)) + from;
+}

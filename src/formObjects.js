@@ -1,30 +1,13 @@
 function createBall(side, level) {
     if (level == null) level = 1;
-    var x;
-    var y;
-    var offset = 20;
-    switch (side) {
-        case "top":
-            x = canvasWidth / 2;
-            y = wallThickness + offset;
-            break;
-        case "left":
-            x = wallThickness + offset;
-            y = canvasHeight / 2;
-            break;
-        case "right":
-            x = canvasWidth - wallThickness - offset;
-            y = canvasHeight / 2;
-            break;
-        case "down":
-            x = canvasWidth / 2;
-            y = canvasHeight - wallThickness - offset;
-            break;
-    }
+    var offset = 70;
+    var x = canvasWidth / 2;
+    var y = wallThickness + offset;
     var ballInfo = getBallInfo(level);
     var ball = Bodies.circle(x, y, ballInfo.size, options = { label: level, render: { fillStyle: ballInfo.color }, isSleeping: true, slop: 0 }, 80);
     ball.render.text = Math.pow(2, level);
     Composite.add(engine.world, [ball]);
+    return ball;
 }
 
 function getBallInfo(level) {

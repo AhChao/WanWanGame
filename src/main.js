@@ -15,6 +15,7 @@ const canvasHeight = screen.width < 600 ? screen.width : 600;
 const wallThickness = 30;
 var score = 0;
 var bestScore = localStorage.getItem('bestScore') ? localStorage.getItem('bestScore') : 0;
+var holdingBall;
 
 function runTheRunner() {
     Runner.run(runner, engine);
@@ -64,19 +65,19 @@ function init() {
     });
     // create two boxes and a ground
     //var wallA = Bodies.rectangle(canvasWidth / 4, canvasHeight / 4, canvasWidth, wallThickness, { isStatic: true, render: { fillStyle: "#BC6C25" }, slop: 0 });
-    var wallLeft = Bodies.rectangle(0, canvasHeight * 1, wallThickness, canvasHeight * 1.7, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
-    var wallRight = Bodies.rectangle(canvasWidth, canvasHeight * 1, wallThickness, canvasHeight * 1.7, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
+    var wallLeft = Bodies.rectangle(0, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
+    var wallRight = Bodies.rectangle(canvasWidth, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
     var wallBottom = Bodies.rectangle(0, canvasHeight, canvasWidth * 2, wallThickness, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
 
     // add all of the bodies to the world
     Composite.add(engine.world, [wallLeft, wallRight, wallBottom]);
-    createBall("down");
+    holdingBall = createBall("top", getRandomNumber(1, 5));
 
     // run the renderer
     Render.run(render);
     // create runner
     runner = Runner.create();
-    engine.gravity.scale = 0.0007;
+    engine.gravity.scale = 0.001;
     Events.on(engine, "collisionStart", collisionTriggered);
     Events.on(engine, "afterUpdate", renderText);
     document.addEventListener('keydown', function (event) {
