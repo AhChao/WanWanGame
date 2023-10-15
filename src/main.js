@@ -3,6 +3,7 @@ var Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
+    BodyM = Matter.Body,
     Composite = Matter.Composite,
     Events = Matter.Events,
     Plugins = Matter.Plugins;
@@ -16,6 +17,7 @@ const wallThickness = 30;
 var score = 0;
 var bestScore = localStorage.getItem('bestScore') ? localStorage.getItem('bestScore') : 0;
 var holdingBall;
+var holdingDropping = false;
 
 function runTheRunner() {
     Runner.run(runner, engine);
@@ -83,20 +85,43 @@ function init() {
     document.addEventListener('keydown', function (event) {
         switch (event.key) {
             case "ArrowLeft":
-                swipeScreen("left");
+                moveTheHolding("left");
                 break;
             case "ArrowRight":
-                swipeScreen("right");
-                break;
-            case "ArrowUp":
-                swipeScreen("up");
+                moveTheHolding("right");
                 break;
             case "ArrowDown":
-                swipeScreen("down");
+                dropTheHolding();
                 break;
         }
     });
     runTheRunner();
+}
+
+function moveTheHolding(side) {
+    var movingScale = 3;
+    var offset = 10;
+    var rightBound = canvasWidth - wallThickness - holdingBall.circleRadius + offset;
+    var leftBound = 0 + wallThickness + holdingBall.circleRadius - offset;
+    if (!holdingDropping) {
+        switch (side) {
+            case "left":
+                BodyM.translate(holdingBall,
+                    { x: (holdingBall.position.x > leftBound ? - movingScale : 0), y: 0 });
+                break;
+            case "right":
+                BodyM.translate(holdingBall,
+                    { x: (holdingBall.position.x < rightBound ? movingScale : 0), y: 0 });
+                break;
+        }
+    }
+}
+
+function dropTheHolding() {
+    if (!holdingDropping) {
+        holdingBall.isSleeping = false;
+        holdingDropping = true;
+    }
 }
 
 function retry() {
