@@ -95,7 +95,7 @@ function init() {
                 yScale: setting_textureScaleClaw[1]
             }
         }
-        claw = Bodies.rectangle(x, y, 30, 30, { isStatic: true, render: wallRender, slop: 0, collisionFilter: { category: 0x0002 }, render: clawRender });
+        claw = Bodies.rectangle(x, y, 30, 30, { isStatic: true, render: wallRender, slop: 0, collisionFilter: { group: -1 }, render: clawRender });
         Composite.add(engine.world, [claw]);
     }
 
@@ -130,8 +130,8 @@ function init() {
 
 function moveTheHolding(side) {
     var offset = 10;
-    var rightBound = canvasWidth - wallThickness - holdingBall.circleRadius + offset;
-    var leftBound = 0 + wallThickness + holdingBall.circleRadius - offset;
+    var rightBound = canvasWidth - wallThickness - holdingBall.circleRadius * 1.8 + offset;
+    var leftBound = 0 + wallThickness + holdingBall.circleRadius * 1.8 - offset;
     if (!holdingDropping) {
         var translateValue = 0;
         switch (side) {
