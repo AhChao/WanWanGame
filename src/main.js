@@ -103,7 +103,6 @@ function init() {
 }
 
 function moveTheHolding(side) {
-    var movingScale = 3;
     var offset = 10;
     var rightBound = canvasWidth - wallThickness - holdingBall.circleRadius + offset;
     var leftBound = 0 + wallThickness + holdingBall.circleRadius - offset;
@@ -111,11 +110,11 @@ function moveTheHolding(side) {
         switch (side) {
             case "left":
                 BodyM.translate(holdingBall,
-                    { x: (holdingBall.position.x > leftBound ? - movingScale : 0), y: 0 });
+                    { x: (holdingBall.position.x > leftBound ? - setting_movingScale : 0), y: 0 });
                 break;
             case "right":
                 BodyM.translate(holdingBall,
-                    { x: (holdingBall.position.x < rightBound ? movingScale : 0), y: 0 });
+                    { x: (holdingBall.position.x < rightBound ? setting_movingScale : 0), y: 0 });
                 break;
         }
     }

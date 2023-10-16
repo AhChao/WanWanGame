@@ -6,3 +6,7 @@ var setting_usingBallImage = true;
 //-1 is the no use slot, please edit after that
 //ball radius ratio for reference [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
 var setting_textureScale = [-1, 0.04, 0.06, 0.08, 0.105, 0.108, 0.142, 0.21, 0.24, 0.3, 0.3, 0.435];
+
+//Game reltaed parameter
+//The holding ball move distance by press <- and ->
+var setting_movingScale = 15;
