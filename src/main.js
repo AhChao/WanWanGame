@@ -91,7 +91,7 @@ function init() {
 
     if (setting_displayClaw) {
         var x = canvasWidth / 2 + setting_clawRelativePosition[0];
-        var y = wallThickness + 70 * setting_globalSizeCoef + setting_clawRelativePosition[1];
+        var y = wallThickness + 30 * setting_globalSizeCoef + setting_clawRelativePosition[1];
         var clawRender = {
             sprite: {
                 texture: "./img/background/claw.png",

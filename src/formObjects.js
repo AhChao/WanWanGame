@@ -3,7 +3,7 @@ function createBall(side, level) {
     if (level == null) level = 1;
     var offset = 70 * setting_globalSizeCoef;
     var x = canvasWidth / 2;
-    var y = wallThickness + offset;
+    var y = wallThickness;
     if (setting_displayClaw) {
         x = claw.position.x - setting_clawRelativePosition[0] * setting_globalSizeCoef;
         y = claw.position.y - setting_clawRelativePosition[1] * setting_globalSizeCoef;
@@ -68,17 +68,18 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     ball.mass = massMapping[newLevel];
     ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
-    if ((bodyA.id == holdingBall.id || bodyB.id == holdingBall.id) && holdingDropping) {
-        holdingBall = createBall("top", getRandomNumber(1, 5));
-        holdingDropping = false;
-    }
+    // if ((bodyA.id == holdingBall.id || bodyB.id == holdingBall.id) && holdingDropping) {
+    //     holdingBall = createBall("top", getRandomNumber(1, 5));
+    //     holdingDropping = false;
+    // }
+    // console.log("Body A Id : " + bodyA.id + ", Body B Id : " + bodyB.id + ", Holding Ball Id : " + holdingBall.id + " - in the world" + engine.world.bodies.filter(x => x.id == bodyAId).length);
     Composite.remove(engine.world, [bodyA, bodyB]);
-    for (var i in engine.world.bodies) {
-        if (ball.label != engine.world.bodies[i].label) continue;
-        if (ball.id == engine.world.bodies[i].id) continue;
-        var collision = Matter.SAT.collides(ball, engine.world.bodies[i]);
-        if (collision.collided) {
-            ballCollision(ball.label, ball.id, engine.world.bodies[i].id)
-        }
-    }
+    // for (var i in engine.world.bodies) {
+    //     if (ball.label != engine.world.bodies[i].label) continue;
+    //     if (ball.id == engine.world.bodies[i].id) continue;
+    //     var collision = Matter.SAT.collides(ball, engine.world.bodies[i]);
+    //     if (collision.collided) {
+    //         ballCollision(ball.label, ball.id, engine.world.bodies[i].id)
+    //     }
+    // }
 }
