@@ -96,6 +96,7 @@ function init() {
             }
         }
         claw = Bodies.rectangle(x, y, 30, 30, { isStatic: true, render: wallRender, slop: 0, collisionFilter: { group: -1 }, render: clawRender });
+        claw.label = "claw";
         Composite.add(engine.world, [claw]);
     }
 

@@ -20,7 +20,7 @@ function createBall(side, level) {
         {
             fillStyle: ballInfo.color
         }
-    var ball = Bodies.circle(x, y, ballInfo.size, options = { label: level, render: renderObj, isSleeping: true, slop: 0 }, 80);
+    var ball = Bodies.circle(x, y, ballInfo.size, options = { label: level, render: renderObj, isSleeping: true, slop: 0.01 }, 80);
     ball.render.text = Math.pow(2, level);
     ball.mass = massMapping[level];
     ball.frictionStatic = 0;
@@ -63,6 +63,9 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     var newBallInfo = getBallInfo(newLevel);
     var bodyA = engine.world.bodies.filter(x => x.id == bodyAId)[0];
     var bodyB = engine.world.bodies.filter(x => x.id == bodyBId)[0];
+    if (bodyA == null || bodyB == null) {
+        return;
+    }
     var newForce = forceAdding(bodyA, bodyB);
     var newPosition = getMiddlePlace(bodyA.position, bodyB.position);
     var renderObj = setting_usingBallImage ?
@@ -76,7 +79,7 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
         {
             fillStyle: newBallInfo.color
         }
-    var ball = Bodies.circle(newPosition.x, newPosition.y, newBallInfo.size, options = { label: newLevel, render: renderObj }, 80);
+    var ball = Bodies.circle(newPosition.x, newPosition.y, newBallInfo.size, options = { label: newLevel, render: renderObj, slop: 0.01 }, 80);
     ball.render.text = Math.pow(2, newLevel);
     ball.force.x = newForce[0];
     ball.force.y = newForce[1];
@@ -84,6 +87,10 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     ball.mass = massMapping[newLevel];
     ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
+    if ((bodyA == holdingBall.id || bodyB == holdingBall.id) && holdingDropping) {
+        holdingBall = createBall("top", getRandomNumber(1, 5));
+        holdingDropping = false;
+    }
     Composite.remove(engine.world, [bodyA, bodyB]);
     for (var i in engine.world.bodies) {
         if (ball.label != engine.world.bodies[i].label) continue;
