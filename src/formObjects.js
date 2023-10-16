@@ -38,23 +38,6 @@ function getBallInfo(level) {
     }
 }
 
-function generateBallAfterSwiped(side) {
-    switch (side) {
-        case "top":
-            createBall("down");
-            return;
-        case "down":
-            createBall("top");
-            return;
-        case "left":
-            createBall("right");
-            return;
-        case "right":
-            createBall("left");
-            return;
-    }
-}
-
 function ballCollision(collisionLevel, bodyAId, bodyBId) {
     var newLevel = parseInt(collisionLevel) + 1;
     updateScore(Math.pow(2, newLevel));
