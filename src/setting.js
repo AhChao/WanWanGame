@@ -19,6 +19,9 @@ var setting_clawRelativePosition = [-70, 0];
 //Scale for the claw x,y
 var setting_textureScaleClaw = [0.1, 0.1];
 
-//Game reltaed parameter
+//Game reltaed parameter - only edit when you know what will be modifed, may cause game error if with wrong error
 //The holding ball move distance by press <- and ->
 var setting_movingScale = 15;
+//
+var setting_gridBase = 600;
+var setting_globalSizeCoef = 1;

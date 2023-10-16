@@ -13,7 +13,7 @@ var render;
 var runner;
 const canvasWidth = screen.width < 600 ? screen.width : 600;
 const canvasHeight = screen.width < 600 ? screen.width : 600;
-const wallThickness = 30;
+var wallThickness = 30;
 var score = 0;
 var bestScore = localStorage.getItem('bestScore') ? localStorage.getItem('bestScore') : 0;
 var holdingBall;
@@ -41,6 +41,8 @@ function updateBestScore(newBestScore) {
 
 function init() {
     updateCustomizeStrings();
+    setting_globalSizeCoef = canvasWidth / 600;
+    wallThickness *= setting_globalSizeCoef;
     score = 0;
     updateScore(0);
     // create an engine
@@ -67,14 +69,15 @@ function init() {
             showIds: false,
         }
     });
+
     // create two boxes and a ground
     var wallRender =
         setting_usingBoundaryImage ?
             {
                 sprite: {
                     texture: "./img/background/boundary.png",
-                    xScale: setting_textureScaleBoundary[0],
-                    yScale: setting_textureScaleBoundary[1]
+                    xScale: setting_textureScaleBoundary[0] * setting_globalSizeCoef,
+                    yScale: setting_textureScaleBoundary[1] * setting_globalSizeCoef
                 }
             } :
             {
@@ -88,12 +91,12 @@ function init() {
 
     if (setting_displayClaw) {
         var x = canvasWidth / 2 + setting_clawRelativePosition[0];
-        var y = wallThickness + 70 + setting_clawRelativePosition[1];
+        var y = wallThickness + 70 * setting_globalSizeCoef + setting_clawRelativePosition[1];
         var clawRender = {
             sprite: {
                 texture: "./img/background/claw.png",
-                xScale: setting_textureScaleClaw[0],
-                yScale: setting_textureScaleClaw[1]
+                xScale: setting_textureScaleClaw[0] * setting_globalSizeCoef,
+                yScale: setting_textureScaleClaw[1] * setting_globalSizeCoef
             }
         }
         claw = Bodies.rectangle(x, y, 30, 30, { isStatic: true, render: wallRender, slop: 0, collisionFilter: { group: -1 }, render: clawRender });
@@ -131,7 +134,7 @@ function init() {
 }
 
 function moveTheHolding(side) {
-    var offset = 10;
+    var offset = 10 * setting_globalSizeCoef;
     var rightBound = canvasWidth - wallThickness - holdingBall.circleRadius * 1.8 + offset;
     var leftBound = 0 + wallThickness + holdingBall.circleRadius * 1.8 - offset;
     if (!holdingDropping) {
