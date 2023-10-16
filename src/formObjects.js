@@ -1,3 +1,4 @@
+var massMapping = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 function createBall(side, level) {
     if (level == null) level = 1;
     var offset = 70;
@@ -6,6 +7,7 @@ function createBall(side, level) {
     var ballInfo = getBallInfo(level);
     var ball = Bodies.circle(x, y, ballInfo.size, options = { label: level, render: { fillStyle: ballInfo.color }, isSleeping: true, slop: 0 }, 80);
     ball.render.text = Math.pow(2, level);
+    ball.mass = massMapping[level];
     Composite.add(engine.world, [ball]);
     return ball;
 }
@@ -50,9 +52,7 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     ball.force.x = newForce[0];
     ball.force.y = newForce[1];
     ball.torque = newForce[2];
-    var newPosition = getMiddlePlace(bodyA.position, bodyB.position);
-    var ball = Bodies.circle(newPosition.x, newPosition.y, newBallInfo.size, options = { label: newLevel, render: { fillStyle: newBallInfo.color } }, 80);
-    ball.render.text = Math.pow(2, newLevel);
+    ball.mass = massMapping[newLevel];
     Composite.add(engine.world, [ball]);
     Composite.remove(engine.world, [bodyA, bodyB]);
     for (var i in engine.world.bodies) {
