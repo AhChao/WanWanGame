@@ -35,7 +35,7 @@ function getBallInfo(level) {
     var baseUnit = canvasWidth / 2.5;
     var ballSizeRatioMapping = [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
     return {
-        color: setting_usingBallImage ? "../img/balls/" + level + ".png" : ballColor[level - 1],
+        color: setting_usingBallImage ? "./img/balls/" + level + ".png" : ballColor[level - 1],
         size: baseUnit * ballSizeRatioMapping[level]
     }
 }

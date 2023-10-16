@@ -52,7 +52,7 @@ function init() {
         options: {
             width: canvasWidth,
             height: canvasHeight,
-            background: setting_usingBackgroundImage ? '../img/background/background.png' : '#FEFAE0',
+            background: setting_usingBackgroundImage ? './img/background/background.png' : '#FEFAE0',
             hasBounds: true,
             showBounds: false,
             enabled: true,
@@ -72,7 +72,7 @@ function init() {
         setting_usingBoundaryImage ?
             {
                 sprite: {
-                    texture: "../img/background/boundary.png",
+                    texture: "./img/background/boundary.png",
                     xScale: setting_textureScaleBoundary[0],
                     yScale: setting_textureScaleBoundary[1]
                 }
@@ -91,7 +91,7 @@ function init() {
         var y = wallThickness + 70 + setting_clawRelativePosition[1];
         var clawRender = {
             sprite: {
-                texture: "../img/background/claw.png",
+                texture: "./img/background/claw.png",
                 xScale: setting_textureScaleClaw[0],
                 yScale: setting_textureScaleClaw[1]
             }
