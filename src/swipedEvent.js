@@ -34,7 +34,9 @@ function triggerEnding() {
     else {
         alert("You got " + score + " points!");
     }
-    renderText();
+    if (!setting_usingBallImage) {
+        renderText();
+    }
 }
 
 function gravityChange(side) {

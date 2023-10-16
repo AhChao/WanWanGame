@@ -83,7 +83,9 @@ function init() {
     runner = Runner.create();
     engine.gravity.scale = 0.001;
     Events.on(engine, "collisionStart", collisionTriggered);
-    Events.on(engine, "afterUpdate", renderText);
+    if (!setting_usingBallImage) {
+        Events.on(engine, "afterUpdate", renderText);
+    }
     document.addEventListener('keydown', function (event) {
         switch (event.key) {
             case "ArrowLeft":

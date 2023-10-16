@@ -5,7 +5,18 @@ function createBall(side, level) {
     var x = canvasWidth / 2;
     var y = wallThickness + offset;
     var ballInfo = getBallInfo(level);
-    var ball = Bodies.circle(x, y, ballInfo.size, options = { label: level, render: { fillStyle: ballInfo.color }, isSleeping: true, slop: 0 }, 80);
+    var renderObj = setting_usingBallImage ?
+        {
+            sprite: {
+                texture: ballInfo.color,
+                xScale: setting_textureScale[level],
+                yScale: setting_textureScale[level]
+            }
+        } :
+        {
+            fillStyle: ballInfo.color
+        }
+    var ball = Bodies.circle(x, y, ballInfo.size, options = { label: level, render: renderObj, isSleeping: true, slop: 0 }, 80);
     ball.render.text = Math.pow(2, level);
     ball.mass = massMapping[level];
     ball.frictionStatic = 0;
@@ -20,7 +31,7 @@ function getBallInfo(level) {
     var baseUnit = canvasWidth / 2.5;
     var ballSizeRatioMapping = [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
     return {
-        color: ballColor[level - 1],
+        color: setting_usingBallImage ? "../img/balls/" + level + ".png" : ballColor[level - 1],
         size: baseUnit * ballSizeRatioMapping[level]
     }
 }
@@ -50,7 +61,18 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     var bodyB = engine.world.bodies.filter(x => x.id == bodyBId)[0];
     var newForce = forceAdding(bodyA, bodyB);
     var newPosition = getMiddlePlace(bodyA.position, bodyB.position);
-    var ball = Bodies.circle(newPosition.x, newPosition.y, newBallInfo.size, options = { label: newLevel, render: { fillStyle: newBallInfo.color } }, 80);
+    var renderObj = setting_usingBallImage ?
+        {
+            sprite: {
+                texture: newBallInfo.color,
+                xScale: setting_textureScale[newLevel],
+                yScale: setting_textureScale[newLevel]
+            }
+        } :
+        {
+            fillStyle: newBallInfo.color
+        }
+    var ball = Bodies.circle(newPosition.x, newPosition.y, newBallInfo.size, options = { label: newLevel, render: renderObj }, 80);
     ball.render.text = Math.pow(2, newLevel);
     ball.force.x = newForce[0];
     ball.force.y = newForce[1];
