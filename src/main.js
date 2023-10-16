@@ -50,7 +50,7 @@ function init() {
         options: {
             width: canvasWidth,
             height: canvasHeight,
-            background: '#FEFAE0',
+            background: setting_usingBackgroundImage ? '../img/background/background.png' : '#FEFAE0',
             hasBounds: true,
             showBounds: false,
             enabled: true,
