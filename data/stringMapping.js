@@ -12,4 +12,5 @@ function updateCustomizeStrings() {
     Object.keys(stringMapping).forEach(key => {
         window.document.body.outerHTML = window.document.body.outerHTML.replace(key, stringMapping[key]);
     });
+    window.document.head.outerHTML = window.document.head.outerHTML.replace("{title}", stringMapping["{title}"]);
 }
