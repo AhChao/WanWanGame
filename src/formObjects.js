@@ -4,6 +4,10 @@ function createBall(side, level) {
     var offset = 70;
     var x = canvasWidth / 2;
     var y = wallThickness + offset;
+    if (setting_displayClaw) {
+        x = claw.position.x - setting_clawRelativePosition[0];
+        y = claw.position.y - setting_clawRelativePosition[1];
+    }
     var ballInfo = getBallInfo(level);
     var renderObj = setting_usingBallImage ?
         {

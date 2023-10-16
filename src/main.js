@@ -18,6 +18,7 @@ var score = 0;
 var bestScore = localStorage.getItem('bestScore') ? localStorage.getItem('bestScore') : 0;
 var holdingBall;
 var holdingDropping = false;
+var claw;
 
 function runTheRunner() {
     Runner.run(runner, engine);
@@ -66,7 +67,6 @@ function init() {
         }
     });
     // create two boxes and a ground
-    //var wallA = Bodies.rectangle(canvasWidth / 4, canvasHeight / 4, canvasWidth, wallThickness, { isStatic: true, render: { fillStyle: "#BC6C25" }, slop: 0 });
     var wallRender =
         setting_usingBoundaryImage ?
             {
@@ -84,6 +84,20 @@ function init() {
     var wallBottom = Bodies.rectangle(canvasHeight * 0.75, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: wallRender, angle: getRadiusByDegree(90), slop: 0 });
     wallBottom.frictionStatic = 0;
     wallBottom.friction = 0;
+
+    if (setting_displayClaw) {
+        var x = canvasWidth / 2 + setting_clawRelativePosition[0];
+        var y = wallThickness + 70 + setting_clawRelativePosition[1];
+        var clawRender = {
+            sprite: {
+                texture: "../img/background/claw.png",
+                xScale: setting_textureScaleClaw[0],
+                yScale: setting_textureScaleClaw[1]
+            }
+        }
+        claw = Bodies.rectangle(x, y, 30, 30, { isStatic: true, render: wallRender, slop: 0, collisionFilter: { category: 0x0002 }, render: clawRender });
+        Composite.add(engine.world, [claw]);
+    }
 
     // add all of the bodies to the world
     Composite.add(engine.world, [wallLeft, wallRight, wallBottom]);
@@ -119,15 +133,22 @@ function moveTheHolding(side) {
     var rightBound = canvasWidth - wallThickness - holdingBall.circleRadius + offset;
     var leftBound = 0 + wallThickness + holdingBall.circleRadius - offset;
     if (!holdingDropping) {
+        var translateValue = 0;
         switch (side) {
             case "left":
+                translateValue = (holdingBall.position.x > leftBound ? - setting_movingScale : 0);
                 BodyM.translate(holdingBall,
-                    { x: (holdingBall.position.x > leftBound ? - setting_movingScale : 0), y: 0 });
+                    { x: translateValue, y: 0 });
                 break;
+
             case "right":
+                translateValue = (holdingBall.position.x < rightBound ? setting_movingScale : 0);
                 BodyM.translate(holdingBall,
-                    { x: (holdingBall.position.x < rightBound ? setting_movingScale : 0), y: 0 });
+                    { x: translateValue, y: 0 });
                 break;
+        }
+        if (setting_displayClaw) {
+            claw.position.x += translateValue;
         }
     }
 }
