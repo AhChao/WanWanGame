@@ -70,6 +70,8 @@ function init() {
     var wallLeft = Bodies.rectangle(0, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
     var wallRight = Bodies.rectangle(canvasWidth, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
     var wallBottom = Bodies.rectangle(0, canvasHeight, canvasWidth * 2, wallThickness, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
+    wallBottom.frictionStatic = 0;
+    wallBottom.friction = 0;
 
     // add all of the bodies to the world
     Composite.add(engine.world, [wallLeft, wallRight, wallBottom]);

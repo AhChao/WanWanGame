@@ -8,6 +8,7 @@ function createBall(side, level) {
     var ball = Bodies.circle(x, y, ballInfo.size, options = { label: level, render: { fillStyle: ballInfo.color }, isSleeping: true, slop: 0 }, 80);
     ball.render.text = Math.pow(2, level);
     ball.mass = massMapping[level];
+    ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
     return ball;
 }
@@ -55,6 +56,7 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     ball.force.y = newForce[1];
     ball.torque = newForce[2];
     ball.mass = massMapping[newLevel];
+    ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
     Composite.remove(engine.world, [bodyA, bodyB]);
     for (var i in engine.world.bodies) {
