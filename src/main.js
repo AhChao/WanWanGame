@@ -67,9 +67,21 @@ function init() {
     });
     // create two boxes and a ground
     //var wallA = Bodies.rectangle(canvasWidth / 4, canvasHeight / 4, canvasWidth, wallThickness, { isStatic: true, render: { fillStyle: "#BC6C25" }, slop: 0 });
-    var wallLeft = Bodies.rectangle(0, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
-    var wallRight = Bodies.rectangle(canvasWidth, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
-    var wallBottom = Bodies.rectangle(0, canvasHeight, canvasWidth * 2, wallThickness, { isStatic: true, render: { fillStyle: "#CCCCCC" }, slop: 0 });
+    var wallRender =
+        setting_usingBoundaryImage ?
+            {
+                sprite: {
+                    texture: "../img/background/boundary.png",
+                    xScale: setting_textureScaleBoundary[0],
+                    yScale: setting_textureScaleBoundary[1]
+                }
+            } :
+            {
+                fillStyle: "#CCCCCC"
+            }
+    var wallLeft = Bodies.rectangle(0, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: wallRender, slop: 0 });
+    var wallRight = Bodies.rectangle(canvasWidth, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: wallRender, slop: 0 });
+    var wallBottom = Bodies.rectangle(canvasHeight * 0.75, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: wallRender, angle: getRadiusByDegree(90), slop: 0 });
     wallBottom.frictionStatic = 0;
     wallBottom.friction = 0;
 

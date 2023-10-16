@@ -1,5 +1,10 @@
 //Will use the image as the background or not, path is img/ background/background.png
 var setting_usingBackgroundImage = true;
+//Will use the image as the boundary or not, path is img/ background/boundary.png
+//Default size is almost 30 * 600, the boundary.png is for left and right version, code will handle bottom one for you(rotate 90)
+var setting_usingBoundaryImage = true;
+var setting_textureScaleBoundary = [1, 1.55];
+
 //Will use the image as the ball or not, path is img/balls/1 ~ 11.png(ex. img/balls/1.png)
 var setting_usingBallImage = true;
 //If ball use the image, image too big or too small can use this value to change(Ball radius in game is fixed, wont be affected by this)
