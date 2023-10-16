@@ -15,10 +15,12 @@ function createBall(side, level) {
 function getBallInfo(level) {
     level = parseInt(level);
     const ballColor = ["#D8F3DC", "#B7E4C7", "#95D5B2", "#74C69D", "#52B788", "#40916C", "#2D6A4F", "#1B4332", "#1B4332", "#081C15"];
-    var ballSzie = Math.sqrt((canvasWidth / 300) * level * Math.sqrt(Math.sqrt(level))) * 10;
+    var ballSize = Math.sqrt((canvasWidth / 300) * level * Math.sqrt(Math.sqrt(level))) * 10;
+    var baseUnit = canvasWidth / 2.5;
+    var ballSizeRatioMapping = [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
     return {
         color: ballColor[level - 1],
-        size: ballSzie
+        size: baseUnit * ballSizeRatioMapping[level]
     }
 }
 
