@@ -43,6 +43,13 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     var newBallInfo = getBallInfo(newLevel);
     var bodyA = engine.world.bodies.filter(x => x.id == bodyAId)[0];
     var bodyB = engine.world.bodies.filter(x => x.id == bodyBId)[0];
+    var newForce = forceAdding(bodyA, bodyB);
+    var newPosition = getMiddlePlace(bodyA.position, bodyB.position);
+    var ball = Bodies.circle(newPosition.x, newPosition.y, newBallInfo.size, options = { label: newLevel, render: { fillStyle: newBallInfo.color } }, 80);
+    ball.render.text = Math.pow(2, newLevel);
+    ball.force.x = newForce[0];
+    ball.force.y = newForce[1];
+    ball.torque = newForce[2];
     var newPosition = getMiddlePlace(bodyA.position, bodyB.position);
     var ball = Bodies.circle(newPosition.x, newPosition.y, newBallInfo.size, options = { label: newLevel, render: { fillStyle: newBallInfo.color } }, 80);
     ball.render.text = Math.pow(2, newLevel);

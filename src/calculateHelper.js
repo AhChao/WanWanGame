@@ -21,3 +21,12 @@ function isAreaMeetFillGate() {
 function getRandomNumber(from, to) {
     return Math.floor(Math.random() * (to - from)) + from;
 }
+
+function forceAdding(bodyA, bodyB) {
+    var newForceX = (bodyA.force.x + bodyB.force.x) / 2;
+    var newForceY = (bodyA.force.y + bodyB.force.y) / 2;
+    var newTorque = (bodyA.torque + bodyB.torque) / 2;
+    return [newForceX,
+        newForceY,
+        newTorque];
+}
