@@ -40,6 +40,7 @@ function updateBestScore(newBestScore) {
 }
 
 function init() {
+    updateCustomizeStrings();
     score = 0;
     updateScore(0);
     // create an engine
