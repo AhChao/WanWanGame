@@ -87,7 +87,7 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     ball.mass = massMapping[newLevel];
     ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
-    if ((bodyA == holdingBall.id || bodyB == holdingBall.id) && holdingDropping) {
+    if ((bodyA.id == holdingBall.id || bodyB.id == holdingBall.id) && holdingDropping) {
         holdingBall = createBall("top", getRandomNumber(1, 5));
         holdingDropping = false;
     }
