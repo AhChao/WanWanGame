@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css" />
     <style>
       body {
         background-color: #fefae0;
@@ -64,25 +65,31 @@
     </style>
   </head>
   <body>
-    <div>
-      <h1 class="titleInPage">{title}</h1>
-      <div class="centerField">
-        <span class="displayField">{score}<br /><span id="scoreDisplay" class="scoreField">0</span></span>
-        <span class="displayField">{bestScore}<br /><span id="bestScoreDisplay" class="scoreField">0</span></span>
-        <button class="buttonStyle" onclick="retry()">{retryBtn}</button>
+    <div class="container">
+      <div class="row">
+        <h1 class="titleInPage col-12">{title}</h1>
+        <div class="centerField col-12 col-sm-8">
+          <span class="displayField">{score}<br /><span id="scoreDisplay" class="scoreField">0</span></span>
+          <span class="displayField">{bestScore}<br /><span id="bestScoreDisplay" class="scoreField">0</span></span>
+          <button class="buttonStyle" onclick="retry()">{retryBtn}</button>
+        </div>
       </div>
-      <div id="canvasPlace"></div>
-      <div>
-        <h2 class="titleInPage">{rule}</h2>
-        <div class="description">{ruleDesc}</div>
-      </div>
-      <div class="footer">
-        <span class="footerText">Made by <a class="bottomLink" href="https://github.com/AhChao" target="_blank">AhChao</a>@2023</span>
+      <div class="row">
+        <div id="canvasPlace" class="col-12 col-sm-5"></div>
+        <div class="d-none d-sm-block col-sm-1"></div>
+        <div class="col-12 col-sm-3 ml-6">
+          <h2 class="titleInPage">{rule}</h2>
+          <div class="description">{ruleDesc}</div>
+        </div>
+        <div class="footer col-12">
+          <span class="footerText">Made by <a class="bottomLink" href="https://github.com/AhChao" target="_blank">AhChao</a>@2023</span>
+        </div>
       </div>
     </div>
 
     <script src="./lib/matter.min.js"></script>
     <script src="./lib/swiped-events.min.js"></script>
+    <script src="./lib/bootstrap.bundle.min.js"></script>
     <script src="./data/stringMapping.js"></script>
     <script src="./src/setting.js"></script>
     <script src="./src/calculateHelper.js"></script>
