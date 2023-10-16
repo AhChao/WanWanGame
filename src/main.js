@@ -19,6 +19,7 @@ var bestScore = localStorage.getItem('bestScore') ? localStorage.getItem('bestSc
 var holdingBall;
 var holdingDropping = false;
 var claw;
+var sensor
 
 function runTheRunner() {
     Runner.run(runner, engine);
@@ -83,6 +84,7 @@ function init() {
             {
                 fillStyle: "#CCCCCC"
             }
+    sensor = Bodies.rectangle(0, 120 * setting_globalSizeCoef, canvasWidth * 2, wallThickness / 5, { isStatic: true, isSensor: true, render: { opacity: setting_sensorOpacity, fillStyle: setting_sensorColor }, slop: 0 });
     var wallLeft = Bodies.rectangle(0, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: wallRender, slop: 0 });
     var wallRight = Bodies.rectangle(canvasWidth, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: wallRender, slop: 0 });
     var wallBottom = Bodies.rectangle(canvasHeight * 0.75, canvasHeight * 1, wallThickness, canvasHeight * 1.5, { isStatic: true, render: wallRender, angle: getRadiusByDegree(90), slop: 0 });
@@ -105,7 +107,7 @@ function init() {
     }
 
     // add all of the bodies to the world
-    Composite.add(engine.world, [wallLeft, wallRight, wallBottom]);
+    Composite.add(engine.world, [sensor, wallLeft, wallRight, wallBottom]);
     holdingBall = createBall("top", getRandomNumber(1, 5));
 
     // run the renderer

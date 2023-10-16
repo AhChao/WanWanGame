@@ -1,3 +1,5 @@
+var setting_sensorColor = "#CCCCCC";
+var setting_sensorOpacity = 0.2;
 //Will use the image as the background or not, path is img/ background/background.png
 var setting_usingBackgroundImage = true;
 //Will use the image as the boundary or not, path is img/ background/boundary.png
