@@ -119,19 +119,7 @@ function init() {
     if (!setting_usingBallImage) {
         Events.on(engine, "afterUpdate", renderText);
     }
-    document.addEventListener('keydown', function (event) {
-        switch (event.key) {
-            case "ArrowLeft":
-                moveTheHolding("left");
-                break;
-            case "ArrowRight":
-                moveTheHolding("right");
-                break;
-            case "ArrowDown":
-                dropTheHolding();
-                break;
-        }
-    });
+    addOperationListeners();
     runTheRunner();
 }
 
