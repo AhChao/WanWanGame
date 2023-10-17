@@ -26,4 +26,5 @@ var setting_textureScaleClaw = [0.1, 0.1];
 var setting_movingScale = 15;
 //
 var setting_gridBase = 600;
+var setting_ballRadiusMultiplier = 1;
 var setting_globalSizeCoef = 1;

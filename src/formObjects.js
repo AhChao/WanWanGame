@@ -13,8 +13,8 @@ function createBall(side, level) {
         {
             sprite: {
                 texture: ballInfo.color,
-                xScale: setting_textureScale[level] * setting_globalSizeCoef,
-                yScale: setting_textureScale[level] * setting_globalSizeCoef
+                xScale: setting_textureScale[level] * setting_globalSizeCoef * setting_ballRadiusMultiplier,
+                yScale: setting_textureScale[level] * setting_globalSizeCoef * setting_ballRadiusMultiplier
             }
         } :
         {
@@ -34,7 +34,7 @@ function getBallInfo(level) {
     var ballSizeRatioMapping = [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
     return {
         color: setting_usingBallImage ? "./img/balls/" + level + ".png" : ballColor[level - 1],
-        size: setting_gridBase / 2.5 * setting_globalSizeCoef * ballSizeRatioMapping[level]
+        size: setting_gridBase / 2.5 * setting_globalSizeCoef * ballSizeRatioMapping[level] * setting_ballRadiusMultiplier
     }
 }
 
@@ -53,8 +53,8 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
         {
             sprite: {
                 texture: newBallInfo.color,
-                xScale: setting_textureScale[newLevel] * setting_globalSizeCoef,
-                yScale: setting_textureScale[newLevel] * setting_globalSizeCoef
+                xScale: setting_textureScale[newLevel] * setting_globalSizeCoef * setting_ballRadiusMultiplier,
+                yScale: setting_textureScale[newLevel] * setting_globalSizeCoef * setting_ballRadiusMultiplier
             }
         } :
         {

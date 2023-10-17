@@ -31,7 +31,7 @@ async function collisionTriggered(e) {
 
 function checkIsStillInsideSensor(nonSensorObj) {
     var collision = Matter.SAT.collides(sensor, nonSensorObj);
-    if (collision.collided) {
+    if (collision.collided || sensor.position.x > nonSensorObj.position.x) {
         alert("GG!");
     }
 }
