@@ -44,6 +44,10 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     var newBallInfo = getBallInfo(newLevel);
     var bodyA = engine.world.bodies.filter(x => x.id == bodyAId)[0];
     var bodyB = engine.world.bodies.filter(x => x.id == bodyBId)[0];
+    if (newLevel > 11) {
+        Composite.remove(engine.world, [bodyA, bodyB]);
+        return;
+    }
     if (bodyA == null || bodyB == null) {
         return;
     }
