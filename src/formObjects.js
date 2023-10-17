@@ -72,18 +72,5 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     ball.mass = massMapping[newLevel];
     ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
-    // if ((bodyA.id == holdingBall.id || bodyB.id == holdingBall.id) && holdingDropping) {
-    //     holdingBall = createBall("top", getRandomNumber(1, 5));
-    //     holdingDropping = false;
-    // }
-    // console.log("Body A Id : " + bodyA.id + ", Body B Id : " + bodyB.id + ", Holding Ball Id : " + holdingBall.id + " - in the world" + engine.world.bodies.filter(x => x.id == bodyAId).length);
     Composite.remove(engine.world, [bodyA, bodyB]);
-    // for (var i in engine.world.bodies) {
-    //     if (ball.label != engine.world.bodies[i].label) continue;
-    //     if (ball.id == engine.world.bodies[i].id) continue;
-    //     var collision = Matter.SAT.collides(ball, engine.world.bodies[i]);
-    //     if (collision.collided) {
-    //         ballCollision(ball.label, ball.id, engine.world.bodies[i].id)
-    //     }
-    // }
 }
