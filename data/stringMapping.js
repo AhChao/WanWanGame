@@ -4,7 +4,8 @@ var stringMapping = {
     "{ruleDesc}": "用左右控制你的飛盤，按下讓狗狗跑出去，<br>引誘一樣的狗狗去玩在一起，<br>吸引更大隻的狗狗吧！<br>小心別讓狗狗玩太瘋跑出草地區，遊戲就會結束囉！",
     "{score}": "分數",
     "{bestScore}": "最高分數",
-    "{retryBtn}": "重來一次"
+    "{retryBtn}": "重來一次",
+    "{mergeCircle}": "狗狗輪"
 }
 
 //Don't edit this part except you know what are you doing
