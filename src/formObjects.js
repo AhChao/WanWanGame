@@ -1,4 +1,6 @@
 var massMapping = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+var ballSizeRatioMapping = [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
+var nextBall = getRandomNumber(1, 5);
 function createBall(side, level) {
     if (level == null) level = 1;
     var offset = 70 * setting_globalSizeCoef;
@@ -25,13 +27,14 @@ function createBall(side, level) {
     ball.mass = massMapping[level];
     ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
+    nextBall = getRandomNumber(1, 5);
+    updateNextImage(nextBall);
     return ball;
 }
 
 function getBallInfo(level) {
     level = parseInt(level);
     const ballColor = ["#D8F3DC", "#B7E4C7", "#95D5B2", "#74C69D", "#52B788", "#40916C", "#2D6A4F", "#1B4332", "#1B4332", "#081C15"];
-    var ballSizeRatioMapping = [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
     return {
         color: setting_usingBallImage ? "./img/balls/" + level + ".png" : ballColor[level - 1],
         size: setting_gridBase / 2.5 * setting_globalSizeCoef * ballSizeRatioMapping[level] * setting_ballRadiusMultiplier
@@ -73,4 +76,11 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
     ball.frictionStatic = 0;
     Composite.add(engine.world, [ball]);
     Composite.remove(engine.world, [bodyA, bodyB]);
+}
+
+function updateNextImage(level) {
+    var nextImage = document.getElementById("nextImage");
+    nextImage.src = "./img/balls/" + level + ".png";
+    nextImage.style.width = (setting_gridBase / 2.5 * setting_globalSizeCoef) / 2 + "px";
+    nextImage.style.height = (setting_gridBase / 2.5 * setting_globalSizeCoef) / 2 + "px";
 }

@@ -5,7 +5,8 @@ var stringMapping = {
     "{score}": "分數",
     "{bestScore}": "最高分數",
     "{retryBtn}": "重來一次",
-    "{mergeCircle}": "狗狗輪"
+    "{mergeCircle}": "狗狗輪",
+    "{next}": "Next"
 }
 
 //Don't edit this part except you know what are you doing

@@ -108,7 +108,7 @@ function init() {
 
     // add all of the bodies to the world
     Composite.add(engine.world, [sensor, wallLeft, wallRight, wallBottom]);
-    holdingBall = createBall("top", getRandomNumber(1, 5));
+    holdingBall = createBall("top", nextBall);
 
     // run the renderer
     Render.run(render);

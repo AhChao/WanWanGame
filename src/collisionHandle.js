@@ -17,7 +17,7 @@ async function collisionTriggered(e) {
                 collidedList.add(e.pairs[i].bodyB.id);
                 if (holdingDropping) {
                     if ((e.pairs[i].bodyA.id == holdingBall.id || e.pairs[i].bodyB.id == holdingBall.id || collidedList.has(holdingBall.id)) && holdingDropping) {
-                        holdingBall = createBall("top", getRandomNumber(1, 5));
+                        holdingBall = createBall("top", nextBall);
                         holdingDropping = false;
                     }
                 }
