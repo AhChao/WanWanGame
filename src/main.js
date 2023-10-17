@@ -101,7 +101,7 @@ function init() {
                 yScale: setting_textureScaleClaw[1] * setting_globalSizeCoef
             }
         }
-        claw = Bodies.rectangle(x, y, 30, 30, { isStatic: true, render: wallRender, slop: 0, collisionFilter: { group: -1 }, render: clawRender });
+        claw = Bodies.rectangle(x, y, 30, 30, { isStatic: true, render: wallRender, slop: 0, collisionFilter: { category: 0, group: 0, mask: 0x0 }, render: clawRender });
         claw.label = "claw";
         Composite.add(engine.world, [claw]);
     }
