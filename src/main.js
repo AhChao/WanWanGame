@@ -11,7 +11,7 @@ var Engine = Matter.Engine,
 var engine;
 var render;
 var runner;
-const canvasWidth = screen.width < 600 ? screen.width : 600;
+const canvasWidth = screen.width < 600 ? screen.width * 0.95 : 600;
 const canvasHeight = screen.width < 600 ? screen.width : 600;
 var wallThickness = 30;
 var score = 0;
