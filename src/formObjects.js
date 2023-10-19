@@ -43,7 +43,7 @@ function getBallInfo(level) {
 
 function ballCollision(collisionLevel, bodyAId, bodyBId) {
     var newLevel = parseInt(collisionLevel) + 1;
-    updateScore(Math.pow(2, newLevel));
+    updateScore(Math.pow(2, collisionLevel) - 1);
     var newBallInfo = getBallInfo(newLevel);
     var bodyA = engine.world.bodies.filter(x => x.id == bodyAId)[0];
     var bodyB = engine.world.bodies.filter(x => x.id == bodyBId)[0];
