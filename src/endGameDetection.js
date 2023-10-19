@@ -1,7 +1,8 @@
 function triggerEnding() {
     stopTheRunner();
-    if (score > bestScore) {
-        updateBestScore(score);
+    updateHistoryScore(score);
+    if (score == getBestScore()) {
+
         alert("You got " + score + " points and it is NEW HIGH SCORE!\nWell done!");
     }
     else {

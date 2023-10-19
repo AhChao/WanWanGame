@@ -15,7 +15,7 @@ const canvasWidth = screen.width < 600 ? screen.width : 600;
 const canvasHeight = screen.width < 600 ? screen.width : 600;
 var wallThickness = 30;
 var score = 0;
-var bestScore = localStorage.getItem('bestScore') ? localStorage.getItem('bestScore') : 0;
+var scoreHistory = localStorage.getItem('Scores') ? JSON.parse(localStorage.getItem('Scores')) : [['1990-01-01', 0]];
 var holdingBall;
 var holdingDropping = false;
 var claw;
@@ -34,10 +34,26 @@ function updateScore(addAmount) {
     document.getElementById("scoreDisplay").innerHTML = score;
 }
 
-function updateBestScore(newBestScore) {
-    bestScore = newBestScore;
-    localStorage.setItem('bestScore', bestScore);
-    document.getElementById("bestScoreDisplay").innerHTML = bestScore;
+function updateHistoryScore(newScore) {
+    if (newScore != -1) {
+        if (typeof (scoreHistory) != "object") {
+            scoreHistory = [['1990-01-01', 0]];
+            console.log("Score History Break");
+        }
+        scoreHistory.push([new Date().toISOString().slice(0, 10), newScore])
+        localStorage.setItem('Scores', JSON.stringify(scoreHistory));
+    }
+    document.getElementById("bestScoreDisplay").innerHTML = getBestScore();
+}
+
+function getBestScore() {
+    var max = 0;
+    for (var i = 0; i < scoreHistory.length; i++) {
+        if (scoreHistory[i][1] > max) {
+            max = scoreHistory[i][1];
+        }
+    }
+    return max;
 }
 
 function init() {
@@ -185,4 +201,4 @@ function retry() {
     init();
 }
 init();
-updateBestScore(bestScore);
+updateHistoryScore(-1);
