@@ -1,4 +1,4 @@
-var massMapping = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+var massMapping = [-1, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
 var ballSizeRatioMapping = [-1, 0.08, 0.1, 0.14, 0.16, 0.18, 0.24, 0.32, 0.40, 0.48, 0.56, 0.64];
 var nextBall = getRandomNumber(1, 5);
 function createBall(side, level) {
