@@ -23,9 +23,19 @@ function triggerEnding() {
     }
 }
 
+function openCircleInModal() {
+    document.getElementById("menuCloseBtn").click();
+    document.getElementById("highScoreTexts").style.display = "none";
+    document.getElementById("circleImgInModal").style.display = "block";
+    document.getElementById("highScoreTitle").innerHTML = stringMapping["{mergeCircle}"];
+    document.getElementById("highScoreModalBtn").click();
+}
+
 function openHighScoreModal(range) {
     var top3Scores = getTop3HighScoreInRange(range);
     document.getElementById("menuCloseBtn").click();
+    document.getElementById("circleImgInModal").style.display = "none";
+    document.getElementById("highScoreTexts").style.display = "block";
     document.getElementById("highScoreTitle").innerHTML = stringMapping["{" + range + "Top3}"];
     document.getElementById("highScoreFirst").innerHTML = top3Scores[0];
     document.getElementById("highScoreSecond").innerHTML = top3Scores[1];

@@ -118,6 +118,7 @@
             <button onclick="openHighScoreModal('today')" class="btn mt-2 btn-secondary w-50">{todayTop3}</button><br />
             <button onclick="openHighScoreModal('monthly')" class="btn mt-2 btn-secondary w-50">{monthlyTop3}</button><br />
             <button onclick="openHighScoreModal('overall')" class="btn mt-2 btn-secondary w-50">{overallTop3}</button><br />
+            <button onclick="openCircleInModal()" class="btn mt-2 btn-secondary w-50 d-sm-none">{mergeCircle}</button><br />
             <button onclick="refresh()" class="btn mt-2 mb-2 btn-secondary w-50">{retryBtn}</button>
           </div>
         </div>
@@ -132,10 +133,13 @@
             <h5 class="modal-title" style="text-align: center; width: 100%" id="highScoreTitle"></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div style="text-align: center">
+          <div id="highScoreTexts" style="text-align: center">
             <div>🥇 . <span id="highScoreFirst"></span></div>
             <div>🥈 . <span id="highScoreSecond"></span></div>
             <div>🥉 . <span id="highScoreThird"></span></div>
+          </div>
+          <div id="circleImgInModal" style="text-align: center">
+            <img src="./img//background/circle.png" style="width: 80%" />
           </div>
         </div>
       </div>
