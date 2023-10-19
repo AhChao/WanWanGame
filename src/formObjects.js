@@ -79,7 +79,7 @@ function ballCollision(collisionLevel, bodyAId, bodyBId) {
 }
 
 function updateNextImage(level) {
-    var nextImage = document.getElementById("nextImage");
+    var nextImage = screen.width >= 600 ? document.getElementById("nextImage") : document.getElementById("nextImageMobile");
     nextImage.src = "./img/balls/" + level + ".png";
     nextImage.style.width = (setting_gridBase / 2.5 * setting_globalSizeCoef) / 2 + "px";
     nextImage.style.height = (setting_gridBase / 2.5 * setting_globalSizeCoef) / 2 + "px";
