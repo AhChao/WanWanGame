@@ -1,6 +1,7 @@
 var collidedList = new Set();
 var collisionLock = false;
 var detectingList = [];
+var runningTimer = [];
 async function collisionTriggered(e) {
     while (collisionLock) {
         await new Promise((resolve) => setTimeout(resolve, 10));
@@ -11,9 +12,14 @@ async function collisionTriggered(e) {
         for (var i in e.pairs) {
             if (e.pairs[i].bodyA.isSensor || e.pairs[i].bodyB.isSensor) {
                 var nonSensorObj = e.pairs[i].bodyA.isSensor ? e.pairs[i].bodyB : e.pairs[i].bodyA;
-                if (detectingList.indexOf(nonSensorObj.id) == -1) {
+                var timerIndex = detectingList.indexOf(nonSensorObj.id);
+                if (timerIndex == -1) {
                     detectingList.push(nonSensorObj.id);
-                    setTimeout(() => { checkIsStillInsideSensor(nonSensorObj) }, 1500);
+                    runningTimer.push(setTimeout(() => { checkIsStillInsideSensor(nonSensorObj) }, 1500));
+                }
+                else {
+                    clearTimeout(runningTimer[timerIndex]);
+                    runningTimer[timerIndex] = setTimeout(() => { checkIsStillInsideSensor(nonSensorObj) }, 1500);
                 }
             }
             else {
@@ -34,14 +40,15 @@ async function collisionTriggered(e) {
 }
 
 function checkIsStillInsideSensor(nonSensorObj) {
-    detectingList.splice(detectingList.indexOf(nonSensorObj.id), 1);
+    var timerIndex = detectingList.indexOf(nonSensorObj.id);
+    detectingList.splice(timerIndex, 1);
+    runningTimer.splice(timerIndex, 1);
     console.log(detectingList);
     if (engine.world.bodies.filter(x => x.id == nonSensorObj.id).length == 0) {
         return;
     }
     var collision = Matter.SAT.collides(sensor, nonSensorObj);
     if (collision.collided || sensor.position.x > nonSensorObj.position.x) {
-        alert("GG!", collision.collided, sensor.position.x, nonSensorObj.position.x);//Ending Message For Debug
         triggerEnding();
     }
 }

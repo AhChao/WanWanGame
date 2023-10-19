@@ -1,4 +1,7 @@
 function triggerEnding() {
+    for (var i = 0; i < runningTimer.length; i++) {
+        clearTimeout(runningTimer[i]);
+    }
     stopTheRunner();
     updateHistoryScore(score);
     if (score == getBestScore()) {
