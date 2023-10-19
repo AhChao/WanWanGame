@@ -41,6 +41,12 @@ function updateBestScore(newBestScore) {
 }
 
 function init() {
+    window.oncontextmenu = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    };
+
     updateCustomizeStrings();
     setting_globalSizeCoef = canvasWidth / 600;
     wallThickness *= setting_globalSizeCoef;
