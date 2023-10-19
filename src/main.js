@@ -183,10 +183,10 @@ function preLoadImages() {
     for (var i = 1; i <= 11; i++) {
         img.src = "./img/balls/" + i + ".png";
     }
-    img.src = "./img/bakcground/background.png";
-    img.src = "./img/bakcground/boundary.png";
-    img.src = "./img/bakcground/circle.png";
-    img.src = "./img/bakcground/claw.png";
+    img.src = "./img/background/background.png";
+    img.src = "./img/background/boundary.png";
+    img.src = "./img/background/circle.png";
+    img.src = "./img/background/claw.png";
 }
 
 function refresh() {
