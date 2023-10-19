@@ -41,6 +41,7 @@ function updateBestScore(newBestScore) {
 }
 
 function init() {
+    preLoadImages();
     window.oncontextmenu = function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -159,6 +160,17 @@ function dropTheHolding() {
         holdingBall.isSleeping = false;
         holdingDropping = true;
     }
+}
+
+function preLoadImages() {
+    var img = new Image();
+    for (var i = 1; i <= 11; i++) {
+        img.src = "./img/balls/" + i + ".png";
+    }
+    img.src = "./img/bakcground/background.png";
+    img.src = "./img/bakcground/boundary.png";
+    img.src = "./img/bakcground/circle.png";
+    img.src = "./img/bakcground/claw.png";
 }
 
 function retry() {
