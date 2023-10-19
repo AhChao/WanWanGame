@@ -1,6 +1,7 @@
 # WanWanGame
 
 <img src="./img/readme/sample1.png" width="700"></img>
+<img src="./img/readme/sample2.png" height="475"></img>
 
 ## 介紹
 
@@ -24,6 +25,15 @@
 3. 實際玩遊戲確認圖的大小調整，調整 src/setting.js 這行中的 setting_textureScale，除了第一個值不調整，後面依序為 1 - 11 的貼圖大小。<br>遊戲內球體的大小是固定的，比例在 setting_textureScale 的上一行有寫，調整成與你的圖相符的比例，確保碰撞視覺效果與你的圖一致。
 4. 依據你的爪子圖希望放的位置與大小調整 setting_clawRelativePosition 和 setting_textureScaleClaw 這兩個參數，前者調整爪子相對於球的正中心的位置，如我的飛盤是放在球的左邊，另一個是爪子大小，爪子並不會碰撞，大小只影響顯示
 5. 其他還有一些設定細項可以調，但就要自己讀一下 setting 中的其他英文，如果覺得希望有更多可調整參數或有效果不如預期，可以發 issue 給我
+
+### 詳細的 How - To 改變遊戲文字
+
+<img src="./img/readme/stringMapping.png" width="550"></img>
+
+1. 找到 data/stringMapping.js
+2. 對照上面這張圖，有大多數文字顯示的地方和代碼
+3. 在對應的代碼裡填入你希望顯示的文字，下半部寫不要改的地方不要去動
+4. 儲存後重整就能看見套用
 
 ---
 
