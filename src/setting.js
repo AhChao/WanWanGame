@@ -17,14 +17,14 @@ var setting_textureScale = [-1, 0.04, 0.055, 0.08, 0.11, 0.107, 0.142, 0.21, 0.2
 //Will display claw or not, path is img/ background/claw.png
 var setting_displayClaw = true;
 //Where to place claw, base is the center of the ball [x,y], left -> right, top -> bottom
-var setting_clawRelativePosition = [-70, 0];
+var setting_clawRelativePosition = [-80, 0];
 //Scale for the claw x,y
-var setting_textureScaleClaw = [0.1, 0.1];
+var setting_textureScaleClaw = [0.08, 0.08];
 
 //Game reltaed parameter - only edit when you know what will be modifed, may cause game error if with wrong error
 //The holding ball move distance by press <- and ->
 var setting_movingScale = 15;
 //
 var setting_gridBase = 600;
-var setting_ballRadiusMultiplier = 1;
+var setting_ballRadiusMultiplier = 1.2;
 var setting_globalSizeCoef = 1;
