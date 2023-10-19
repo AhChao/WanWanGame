@@ -4,17 +4,18 @@
 
 ## 介紹
 
-用之前寫過的[遊戲](https://github.com/AhChao/MatterJSPractice/tree/main/Day/Day29)稍作修改後變為和 Nintendo Switch 上的西瓜遊戲一樣模式。
-操作左右下方向鍵來控制球體墜落、堆疊一樣的球體來得到分數。
-如果球體堆疊超出虛線、飛出虛線一定時間則遊戲結束，盡可能的得到高分。
-主要以 javascript 撰寫，物理引擎搭配 [Matter.js](https://github.com/liabru/matter-js) 的 Libaray，RWD 上用到 [Bootstrap 5](https://getbootstrap.com/docs/5.0/utilities/display/) 的 grid system 來協助排版。
-[線上遊玩頁面](https://ahchao.github.io/WanWanGame/)
+用之前寫過的[遊戲](https://github.com/AhChao/MatterJSPractice/tree/main/Day/Day29)稍作修改後變為和 Nintendo Switch 上的西瓜遊戲一樣模式。<br>
+操作左右下方向鍵來控制球體墜落、堆疊一樣的球體來得到分數。<br>
+如果球體堆疊超出虛線、飛出虛線一定時間則遊戲結束，盡可能的得到高分。<br>
+主要以 javascript 撰寫，物理引擎搭配 [Matter.js](https://github.com/liabru/matter-js) 的 Libaray，RWD 上用到 [Bootstrap 5](https://getbootstrap.com/docs/5.0/utilities/display/) 的 grid system 來協助排版。<br>
+[線上遊玩頁面](https://ahchao.github.io/WanWanGame/)<br>
+<br>
 
 ## 高可客製化
 
-為了讓這個遊戲能夠被簡單地套上不同的模組，我將大部分的設定都抽到 src/setting.js 的檔案裡，裡面有多數可客製化的參數。
-個人建議 Game reltaed parameter 以下的區塊不要做調整，其餘區塊的說明都明寫了。
-遊戲內的圖片都是吃固定位置的圖片，只要你把圖片替換掉、根據你的圖片大小調整設定值，即可用你喜歡的圖片以及我的程式碼，快速地做出西瓜遊戲。
+為了讓這個遊戲能夠被簡單地套上不同的模組，我將大部分的設定都抽到 src/setting.js 的檔案裡，裡面有多數可客製化的參數。<br>
+個人建議 Game reltaed parameter 以下的區塊不要做調整，其餘區塊的說明都明寫了。<br>
+遊戲內的圖片都是吃固定位置的圖片，只要你把圖片替換掉、根據你的圖片大小調整設定值，即可用你喜歡的圖片以及我的程式碼，快速地做出西瓜遊戲。<br>
 
 ### 詳細的 How - To 改變遊戲圖案
 
@@ -28,9 +29,9 @@
 
 ## Introduce in English
 
-Copied the base from my [previous project](https://github.com/AhChao/MatterJSPractice/tree/main/Day/Day29) and rewrite it to a suika-game-like game.
-The suika game is a 2048-like game published on Nintendo Switch, this project just a project try to simulate it.
+Copied the base from my [previous project](https://github.com/AhChao/MatterJSPractice/tree/main/Day/Day29) and rewrite it to a suika-game-like game.<br>
+The suika game is a 2048-like game published on Nintendo Switch, this project just a project try to simulate it.<br>
+<br>
+This project is written by javascript, use the lib [Matter.js](https://github.com/liabru/matter-js) to deal psysical stuff, and grid system in [Bootstrap 5](https://getbootstrap.com/docs/5.0/utilities/display/) to layout on different size screen.<br>
 
-This project is written by javascript, use the lib [Matter.js](https://github.com/liabru/matter-js) to deal psysical stuff, and grid system in [Bootstrap 5](https://getbootstrap.com/docs/5.0/utilities/display/) to layout on different size screen.
-
-[Play it now online](https://ahchao.github.io/WanWanGame/)
+[Play it now online](https://ahchao.github.io/WanWanGame/)<br>
