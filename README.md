@@ -35,3 +35,5 @@ The suika game is a 2048-like game published on Nintendo Switch, this project ju
 This project is written by javascript, use the lib [Matter.js](https://github.com/liabru/matter-js) to deal psysical stuff, and grid system in [Bootstrap 5](https://getbootstrap.com/docs/5.0/utilities/display/) to layout on different size screen.<br>
 
 [Play it now online](https://ahchao.github.io/WanWanGame/)<br>
+
+page icon credit by [chikin icons](https://www.svgrepo.com/svg/441623/dog-walking)
