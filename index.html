@@ -75,7 +75,7 @@
         <div class="centerField col-12 col-sm-8">
           <span class="displayField">{score}<br /><span id="scoreDisplay" class="scoreField">0</span></span>
           <span class="displayField">{bestScore}<br /><span id="bestScoreDisplay" class="scoreField">0</span></span>
-          <button class="buttonStyle" onclick="retry()">{retryBtn}</button>
+          <button class="buttonStyle" data-bs-toggle="modal" data-bs-target="#menuModal" id="modalBtn">{menu}</button>
         </div>
       </div>
       <div class="row">
@@ -102,6 +102,40 @@
         </div>
         <div class="footer col-12">
           <span class="footerText">Made by <a class="bottomLink" href="https://github.com/AhChao" target="_blank">AhChao</a>@2023</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #fefae0">
+          <div class="modal-header">
+            <h5 class="modal-title" style="text-align: center; width: 100%" id="menuModalLabel">{menu}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="menuCloseBtn"></button>
+          </div>
+          <div style="text-align: center">
+            <button onclick="openHighScoreModal('today')" class="btn mt-2 btn-secondary w-50">{todayTop3}</button><br />
+            <button onclick="openHighScoreModal('monthly')" class="btn mt-2 btn-secondary w-50">{monthlyTop3}</button><br />
+            <button onclick="openHighScoreModal('overall')" class="btn mt-2 btn-secondary w-50">{overallTop3}</button><br />
+            <button onclick="refresh()" class="btn mt-2 mb-2 btn-secondary w-50">{retryBtn}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#highScoreModal" id="highScoreModalBtn"></button>
+    <div class="modal fade" id="highScoreModal" tabindex="-1" aria-labelledby="highScoreModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #fefae0">
+          <div class="modal-header">
+            <h5 class="modal-title" style="text-align: center; width: 100%" id="highScoreTitle"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div style="text-align: center">
+            <div>🥇 . <span id="highScoreFirst"></span></div>
+            <div>🥈 . <span id="highScoreSecond"></span></div>
+            <div>🥉 . <span id="highScoreThird"></span></div>
+          </div>
         </div>
       </div>
     </div>

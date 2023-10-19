@@ -189,6 +189,9 @@ function preLoadImages() {
     img.src = "./img/bakcground/claw.png";
 }
 
+function refresh() {
+    window.location.reload(false);
+}
 function retry() {
     event.preventDefault();
     Engine.clear(engine);
