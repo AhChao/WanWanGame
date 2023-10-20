@@ -67,6 +67,7 @@ function init() {
     updateCustomizeStrings();
     setting_globalSizeCoef = canvasWidth / 600;
     wallThickness *= setting_globalSizeCoef;
+    setting_movingScale *= setting_globalSizeCoef;
     score = 0;
     updateScore(0);
     // create an engine
